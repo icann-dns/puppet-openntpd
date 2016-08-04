@@ -36,7 +36,7 @@ class openntpd::params {
   ### Application related parameters
 
   $package = $::operatingsystem ? {
-    /(?i:OpenBSD)/ => '',
+    /(?i:OpenBSD)/ => undef,
     default        => 'openntpd',
   }
 
@@ -87,7 +87,7 @@ class openntpd::params {
 
   $config_file_init = $::operatingsystem ? {
     /(?i:Debian|Ubuntu|Mint)/ => '/etc/default/openntpd',
-    /(?i:FreeBSD|OpenBSD)/    => '',
+    /(?i:FreeBSD|OpenBSD)/    => undef,
     default                   => '/etc/sysconfig/openntpd',
   }
 
@@ -111,9 +111,9 @@ class openntpd::params {
   $protocol = 'udp'
 
   # General Settings
-  $my_class = ''
+  $my_class = undef
   $source = ''
-  $source_dir = ''
+  $source_dir = undef
   $source_dir_purge = false
   $template = 'openntpd/ntpd.conf.erb'
   $options = ''
